@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: MIT OR Apache-2.0
+# Copyright (c) 2025-2026 Sky, LLC.
+#
+# md2html: one Markdown file to one self-contained HTML page.
+# Forked from iv's `iv-handbook`. Standard library only, so it builds on
+# macOS and Ubuntu with nothing but a Rust toolchain (1.85 or newer, for
+# edition 2024).
+
+[package]
+name = "md2html"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT OR Apache-2.0"
+authors = ["Robert S.A. Nio"]
+description = "Render one Markdown file as one self-contained HTML page"
+publish = false
+
+[[bin]]
+name = "md2html"
+path = "src/main.rs"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

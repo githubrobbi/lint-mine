@@ -1,0 +1,14 @@
+/* Larger type for cards read at half a MacBook screen (about 750px wide).
+   Appended after the page stylesheet by `md2html --large`. */
+body{font-size:19px;line-height:1.6}
+p,li{max-width:none}
+h3{font-size:22px}
+h4{font-size:17px}
+table{font-size:17px}
+td,th{padding:10px 12px}
+code{font-size:15.5px}
+blockquote{font-size:19px}
+.hero .lead{font-size:21px}
+nav.toc{font-size:15.5px}
+nav.toc ol.sub a{font-size:14.5px}
+@media (max-width:980px){.wrap{padding:0 18px}article{padding-top:20px}}

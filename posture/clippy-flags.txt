@@ -1,4 +1,4 @@
-# strict posture from rust-forge-template, as clippy CLI flags; groups first, specific lints override
+# the lint-mine starting posture, as clippy CLI flags: groups first, specific lints override (later lines win)
 -A unknown_lints
 -A renamed_and_removed_lints
 -D clippy::cargo

@@ -1,0 +1,68 @@
+/* SPDX-License-Identifier: MIT OR Apache-2.0 */
+/* Copyright (c) 2025-2026 Sky, LLC. */
+/* The TOKENS AND CHROME layer every handbook page takes, the site
+   included: the palette in both themes (the landing page's hues and a
+   paper theme derived from them), the reset, links and focus, the bar
+   with the small mark, the buttons, the theme switch. No outside
+   resource: a page must read from a ZIP on disk. */
+:root{
+  --bg:#F6F1EA;--surface:#FFFCF8;--surface-2:#EFE7DC;--text:#1E1B18;--text-2:#625950;
+  --line:#E3DACE;--line-2:#D5CABB;--accent:#B5361E;--accent-2:#CE422B;--accent-3:#93290F;--glow:#F7B26B;
+  --label:#8A5A3A;--code:#EEE6DA;--tip:#2E7D4F;--tip-bg:#E4F1E9;--warn:#B5361E;--warn-bg:#F9E7E1;
+  --note:#8A5A3A;--note-bg:#F5EADB;--shadow:0 10px 30px rgba(70,45,20,.10);--focus:#CE422B;
+  --sans:Inter,'Segoe UI',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  /* How long a landing glows. The one place to change it. */
+  --glow-time:1.4s;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F0D0B;--surface:#1E1B18;--surface-2:#26221E;--text:#F2EDE8;--text-2:#9A8D82;
+  --line:#2C2620;--line-2:#3A332C;--accent:#F7B26B;--accent-2:#CE422B;--accent-3:#B03618;--glow:#F7B26B;
+  --label:#DEA584;--code:#1A1714;--tip:#7FC9A0;--tip-bg:#172A1F;--warn:#F08A6E;--warn-bg:#33201B;
+  --note:#DEA584;--note-bg:#2C2117;--shadow:0 14px 34px rgba(0,0,0,.45);--focus:#F7B26B;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0F0D0B;--surface:#1E1B18;--surface-2:#26221E;--text:#F2EDE8;--text-2:#9A8D82;
+  --line:#2C2620;--line-2:#3A332C;--accent:#F7B26B;--accent-2:#CE422B;--accent-3:#B03618;--glow:#F7B26B;
+  --label:#DEA584;--code:#1A1714;--tip:#7FC9A0;--tip-bg:#172A1F;--warn:#F08A6E;--warn-bg:#33201B;
+  --note:#DEA584;--note-bg:#2C2117;--shadow:0 14px 34px rgba(0,0,0,.45);--focus:#F7B26B;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+/* A jump is a jump: on a long page a smooth scroll across the whole book
+   is a wait, not a courtesy (owner 2026-09-19). */
+html{-webkit-text-size-adjust:100%;--zoom:1}
+body{background:var(--bg);color:var(--text);font:16.5px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--surface);color:var(--text);padding:8px 12px;border:1px solid var(--line);border-radius:8px;z-index:100}
+.skip:focus{left:12px}
+
+/* The bar: small mark, what this page is, the theme switch. */
+.bar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1320px;margin:0 auto;padding:0 24px;height:54px;display:flex;align-items:center;gap:14px}
+.brand{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--text)}
+.brand:hover{text-decoration:none}
+.brand svg{width:22px;height:22px;flex:none}
+.kicker{font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--label);border:1px solid var(--line-2);border-radius:999px;padding:6px 11px;white-space:nowrap}
+.crumb{font-size:13.5px;color:var(--text-2);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grow{flex:1}
+.btn{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--line-2);border-radius:9px;background:var(--surface);color:var(--text);font:500 13.5px var(--sans);cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.btn kbd{font:11px var(--mono);color:var(--text-2);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icon{width:34px;padding:0;justify-content:center}
+/* The text size: a zoom of the page alone, stepped from the bar and
+   remembered per browser (the browser's zoom reaches every tab). */
+body{zoom:var(--zoom)}
+.size{display:inline-flex;align-items:center;gap:4px}
+#size{font:600 12.5px var(--mono);padding:0 10px;min-width:60px;justify-content:center;letter-spacing:.02em}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:disabled:hover{border-color:var(--line-2)}
+@media (max-width:600px){#size{display:none}}
+#theme svg{display:none}
+#theme[data-mode="system"] .auto,#theme[data-mode="light"] .sun,#theme[data-mode="dark"] .moon{display:block}

@@ -1,10 +1,8 @@
-# ACMEX rustfmt configuration - Nightly / Edition 2024
-# Copyright (c) 2025-2026 Acmex Placeholder LLC.
-# SPDX-License-Identifier: MIT OR Apache-2.0
+# rustfmt configuration for the lint-mine posture, passed with --config-path so
+# the repository's own rustfmt.toml is not used. Several options are nightly-only
+# (unstable_features = true); a stable rustfmt warns about them and ignores them.
 #
-# Requires nightly rustfmt (unstable_features = true).
-# Run: cargo fmt          (uses nightly via rust-toolchain.toml)
-# Check: cargo fmt --check
+# Check: cargo mine (the rustfmt pass)   Fix a file: rustfmt --config-path <this> <file>
 
 # ───── Nightly & Edition ─────
 unstable_features = true
