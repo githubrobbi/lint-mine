@@ -103,6 +103,8 @@ machine). The repository is untouched because nothing was ever written into it.
 | `tests/regression.rs` | end-to-end tests on throwaway workspaces (`cargo test --release`) |
 | `posture/` | the starting posture |
 | `docs/HANDBOOK.md`, `docs/handbook.html` | the handbook, source and rendered page (`docs/render.sh`) |
-| `tools/md2html/` | the Markdown renderer the page is made with; standard library only |
+
+The page is rendered with [md2html](https://github.com/githubrobbi/md2html), a
+repository of its own; `docs/render.sh` says how it is found.
 
 MIT license.

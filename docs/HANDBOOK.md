@@ -655,8 +655,10 @@ the clippy run and its trust check, the rustfmt pass, the overlays, the commands
 row and mention it in chapter 7's table.
 
 **This handbook.** `docs/HANDBOOK.md` is the source. `docs/render.sh` renders it to
-`docs/handbook.html` with `tools/md2html`, a small Markdown renderer in this repository
-(standard library only; it builds with the same toolchain). The page is one
+`docs/handbook.html` with `md2html`, a small Markdown renderer that is a repository of
+its own (`github.com/githubrobbi/md2html`; standard library only, it builds with the
+same toolchain). The script finds a checkout beside this one, or the binary named in
+`MD2HTML`, or `md2html` on the PATH. The page is one
 self-contained file with a table of contents, search, a theme switch and the live
 glossary; open it in any browser. Edit the Markdown, run the script, commit both.
 
